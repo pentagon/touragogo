@@ -18,6 +18,7 @@ end
 group :development do
   gem 'capistrano-rails', group: :development
   gem 'capistrano3-unicorn'
+  gem 'capistrano-rvm'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end

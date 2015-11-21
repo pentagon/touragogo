@@ -9,6 +9,7 @@ set :repo_url, 'https://github.com/pentagon/touragogo.git'
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/var/www/devlits.com/findurguide.com'
+set :rvm_ruby_version, '2.2.3@guide'
 
 # Default value for :scm is :git
 # set :scm, :git
