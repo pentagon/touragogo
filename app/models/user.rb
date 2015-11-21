@@ -70,7 +70,7 @@ class User
     role == 1
   end
 
-  def tourist
+  def tourist?
     role == 2
   end
 
