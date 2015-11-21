@@ -35,6 +35,8 @@ class User
   field :role, type: Integer, default: 2
   field :kandy_register_reponse, type: Hash
 
+  embeds_many :tour_links, inverse_of: :tourist
+
   index({provider: 1, uid: 1})
 
   after_create :register_in_kandy
@@ -78,7 +80,7 @@ class User
     if guide?
       Tour.where owner: self
     else
-      []
+      tour_links.map &:tour
     end
   end
 end

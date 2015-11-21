@@ -8,12 +8,14 @@
     <div class="panel-body">
       <%= image_tag('italian-building-italy-destroyed.jpg', alt: '', class: 'img-responsive') %>
       <%= image_tag("black-and-white-man-person-eyes.jpg", alt: "John", class: 'img-responsive img-circle') %>
-      
+
       <div class="col-xs-12 text-center guide-info">
         <h5><small>Guide name:</small> John Madisson</h5>
-        <a href="" class="btn btn-primary btn-md">Details</a>
         <% if current_user_tourist? %>
-          <a href="" class="btn btn-success btn-md">Schedule tour</a>
+          <%= form_tag schedule_tour_path(tour.id) do %>
+          <%= link_to 'Details', tour, class: "btn btn-primary btn-md" %>
+            <%= submit_tag 'Schedule tour', class: "btn btn-success btn-md" %>
+          <% end %>
         <% end %>
       </div>
     </div>

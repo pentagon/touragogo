@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+    member do
+      post :schedule
+    end
   end
 
   get "/get-the-guide", to: 'home#get_the_guide'
