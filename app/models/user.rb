@@ -1,4 +1,9 @@
 class User
+  ROLES = {
+    guide: 1,
+    tourist: 2,
+  }
+
   include Mongoid::Document
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -27,6 +32,7 @@ class User
   field :uid, type: String
 
   field :name, type: String
+  field :role, type: Integer, default: 2
 
   index({provider: 1, uid: 1})
 
