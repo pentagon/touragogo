@@ -1,8 +1,11 @@
 <div class="row">
-  <div class="col-sm-12 tour-item" style="background-image: url('images/italian-building-italy-destroyed.jpg')">
+  <div class="col-sm-12 tour-item"
+    style="background-image: url('<%= image_url('italian-building-italy-destroyed.jpg') %>')">
     <giv class="col-xs-10">
       <h2><%= tour.title %></h2>
-      <a href="" class="btn btn-success btn-md">Schedule tour</a>
+      <% if current_user_tourist? %>
+        <a href="" class="btn btn-success btn-md">Schedule tour</a>
+      <% end %>
     </giv>
     <div class="col-xs-2 text-right">
       <%= image_tag("black-and-white-man-person-eyes.jpg", alt: "John", class: 'img-responsive img-circle') %>
