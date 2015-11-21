@@ -1,8 +1,8 @@
 root = '/var/www/devlits.com/findurguide.com/current'
 working_directory root
-pid "#{root}/tmp/pids/unicorn.pid"
-stderr_path "#{root}/log/unicorn.log"
-stdout_path "#{root}/log/unicorn.log"
+pid "/var/www/devlits.com/findurguide.com/shared/tmp/pids/unicorn.pid"
+stderr_path "/var/www/devlits.com/findurguide.com/shared/log/unicorn.log"
+stdout_path "/var/www/devlits.com/findurguide.com/shared/log/unicorn.log"
 
 # Port configuration
 listen "/var/www/devlits.com/findurguide.com/shared/tmp/sockets/unicorn.sock"
