@@ -13,4 +13,7 @@ class ToursController < ApplicationController
     end
     @tours = Tour.where(attrs)
   end
+
+  def new
+  end
 end
