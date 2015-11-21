@@ -23,7 +23,7 @@ class ToursController < ApplicationController
   end
 
   def create
-    Tour.create params[:tour].to_h
+    Tour.create params[:tour].to_hash
     redirect_to tours_path
   end
 end
