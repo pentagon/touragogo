@@ -33,8 +33,11 @@ class User
 
   field :name, type: String
   field :role, type: Integer, default: 2
+  field :kandy_register_reponse, type: Hash
 
   index({provider: 1, uid: 1})
+
+  after_create :register_in_kandy
 
   ## Confirmable
   # field :confirmation_token,   type: String
@@ -53,5 +56,13 @@ class User
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name   # assuming the user model has a name
     end
+  end
+
+  def register_in_kandy
+    uid = SecureRandom.hex 4
+    key = 'DATffefa3a877d644e09b4985e61abbdce8'
+    url = 'https://api.kandy.io/v1.2/domains/users/user_id'
+    res = RestClient.post "#{url}?key=#{key}&user_id=#{uid}&user_country_code=US", {}
+    set kandy_register_reponse: JSON.parse(res)
   end
 end

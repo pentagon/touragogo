@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '4.2.5'
 
@@ -8,6 +8,7 @@ gem 'omniauth-facebook'
 gem 'mongoid'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
+gem 'rest-client'
 
 group :production do
   gem 'unicorn'
