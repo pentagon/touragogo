@@ -1,6 +1,6 @@
 <div class="home-page__show">
   <div class="container content-container">
-    <%= form_tag search_tours_path do %>
+    <%= form_tag search_tours_path, method: :get do %>
       <div class="form-group home-inputs">
         <label for="country">Country</label>
         <%= select_tag :country, options_from_collection_for_select(country_opts_for_select, :first, :last),

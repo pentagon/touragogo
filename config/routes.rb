@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :tours, only: [:index, :show, :new, :create] do
     collection do
-      post :search
+      get :search
     end
   end
 

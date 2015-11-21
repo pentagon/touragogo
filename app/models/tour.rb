@@ -5,7 +5,8 @@ class Tour
   field :city, type: String
   field :language, type: String
   field :date, type: Time
-  field :owner_id, type: String
+
+  belongs_to :owner, class_name: 'User'
 
   def owner
     @owner ||= User.find_by(id: owner_id)

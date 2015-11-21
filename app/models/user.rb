@@ -65,4 +65,20 @@ class User
     res = RestClient.post "#{url}?key=#{key}&user_id=#{uid}&user_country_code=US", {}
     set kandy_register_reponse: JSON.parse(res)
   end
+
+  def guide?
+    role == 1
+  end
+
+  def tourist
+    role == 2
+  end
+
+  def tours
+    if guide?
+      Tour.where owner: self
+    else
+      []
+    end
+  end
 end

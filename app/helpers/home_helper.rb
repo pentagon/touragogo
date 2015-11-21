@@ -12,6 +12,6 @@ module HomeHelper
   end
 
   def current_user_tourist?
-    current_user && current_user.role == 2
+    current_user && current_user.tourist?
   end
 end

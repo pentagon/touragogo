@@ -1,6 +1,8 @@
 class ToursController < ApplicationController
+  before_action :authenticate_user!, except: [:search]
+
   def index
-    @tours = Tour.all
+    @tours = current_user.tours
   end
 
   def search
@@ -23,7 +25,7 @@ class ToursController < ApplicationController
   end
 
   def create
-    Tour.create params[:tour].to_hash
+    Tour.create params[:tour].to_hash.merge(owner: current_user)
     redirect_to tours_path
   end
 end
