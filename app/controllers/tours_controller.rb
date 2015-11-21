@@ -1,7 +1,7 @@
 class ToursController < ApplicationController
   def search
     attrs = {}
-    [:country, :langugage, :date].each do |field|
+    [:country, :language, :date].each do |field|
       attrs[field] = params[field] if params[field].present?
     end
     if attrs[:date].present?
@@ -15,5 +15,11 @@ class ToursController < ApplicationController
   end
 
   def new
+    @tour = Tour.new
+  end
+
+  def create
+    Tour.create params[:tour].to_h
+    redirect_to tours_path
   end
 end

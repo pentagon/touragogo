@@ -1,5 +1,6 @@
 class Tour
   include Mongoid::Document
+  field :title, type: String
   field :country, type: String
   field :city, type: String
   field :language, type: String
