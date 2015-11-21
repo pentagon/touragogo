@@ -1,30 +1,20 @@
 development:
   clients:
     default:
-      database: touragogo_development
-      hosts:
-        - localhost:27017
-      options:
+      uri: 'mongodb://localhost:27017/touragogo_development'
   options:
     raise_not_found_error: false
 
 production:
   clients:
     default:
-      database: touragogo
-      hosts:
-        - localhost:27017
-      options:
+      uri: 'mongodb://localhost:27017/touragogo'
   options:
     raise_not_found_error: false
 
 test:
   clients:
     default:
-      database: touragogo_test
-      hosts:
-        - localhost:27017
-      options:
-        read:
-          mode: :primary
-        max_pool_size: 1
+      uri: 'mongodb://localhost:27017/touragogo_test'
+  options:
+    raise_not_found_error: false
