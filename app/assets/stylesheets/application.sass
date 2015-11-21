@@ -1,27 +1,49 @@
 body
-	background: white
+  background: white
 
 .navbar
-	position: relative
-	z-index: 10
+  position: relative
+  z-index: 10
 
 .content-container
-	margin-top: 45px
+  margin-top: 45px
 
 .home-page
-	
-	&__show
-		background: transparent image-url('hands-way-guide-tourist.jpg') no-repeat center
-		background-size: cover
-		width: 100%
-		padding-top: 70px
-		position: absolute
-		top: 0
-		bottom: 0
+  
+  &__show
+    background: transparent image-url('hands-way-guide-tourist.jpg') no-repeat center
+    background-size: cover
+    width: 100%
+    padding-top: 70px
+    position: absolute
+    top: 0
+    bottom: 0
 
-		.container
-			background: rgba(255, 255, 255, .75)
-			padding: 25px
+    .container
+      background: rgba(255, 255, 255, .75)
+      padding: 25px
+
+.get-the-guide
+  margin-top: -23px
 
 .tour-item
-	padding: 25px
+  background-size: cover
+  background-position: center
+  color: white
+  padding: 25px
+  position: relative
+
+  .img-circle
+    border: 1px solid white
+    position: absolute
+    width: 25%
+    left: 50%
+    transform: translateX(-50%) translateY(-50%)
+
+  .guide-info
+    padding-top: 50px
+
+  h2, p
+    color: inherit
+
+
