@@ -1,22 +1,24 @@
 <div class="col-sm-4 tour-item">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          <%= tour.title %>
-          <span class="label label-default">Price: $25</span>
-          <span class="label label-default">Duration: 2h 30m</span>
-        </h3>
-      </div>
-      <div class="panel-body">
-        <%= image_tag('italian-building-italy-destroyed.jpg', alt: '', class: 'img-responsive') %>
-        <%= image_tag("black-and-white-man-person-eyes.jpg", alt: "John", class: 'img-responsive img-circle') %>
-        
-        <div class="col-xs-12 text-center guide-info">
-          <h5><small>Guide name:</small> John Madisson</h5>
-          <% if current_user_tourist? %>
-            <a href="" class="btn btn-success btn-md">Schedule tour</a>
-          <% end %>
-        </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <%= tour.title %>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <%= image_tag('italian-building-italy-destroyed.jpg', alt: '', class: 'img-responsive') %>
+      <%= image_tag("black-and-white-man-person-eyes.jpg", alt: "John", class: 'img-responsive img-circle') %>
+      
+      <div class="col-xs-12 text-center guide-info">
+        <h5><small>Guide name:</small> John Madisson</h5>
+        <% if current_user_tourist? %>
+          <a href="" class="btn btn-success btn-md">Schedule tour</a>
+        <% end %>
       </div>
     </div>
+    <div class="panel-footer text-center">
+      <span class="label label-default">Price: $25</span>
+      <span class="label label-default">Duration: 2h 30m</span>
+    </div>
   </div>
+</div>
