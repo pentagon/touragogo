@@ -52,7 +52,7 @@
         <div class="panel-heading hidden-sm hidden-xs">Sign Up with networks</div>
 
         <ul class="list-group text-center">
-          <li class="list-group-item"><a href="" class="btn btn-primary btn-md">Facebook</a></li>
+          <li class="list-group-item"><%= link_to "Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary btn-md" %></li>
           <li class="list-group-item"><a href="" class="btn btn-info">LinkedIn</a></li>
         </ul>
       </div>
@@ -66,14 +66,14 @@
         <div class="col-xs-6">
           <div class="checkbox text-center">
             <label>
-              <input name="who-am-i" type="radio"> tourist
+              <input name="role" type="radio"> tourist
             </label>
           </div>
         </div>
         <div class="col-xs-6 text-center">
           <div class="checkbox">
             <label>
-              <input name="who-am-i" type="radio"> guide
+              <input name="role" type="radio"> guide
             </label>
           </div>
         </div>
