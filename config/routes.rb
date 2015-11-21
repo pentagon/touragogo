@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     get "users/sign_up_guide", to: "users/registrations#new_guide"
     get "users/sign_up_tourist", to: "users/registrations#new_tourist"
   end
+
+  resources :tours, only: [:index, :show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

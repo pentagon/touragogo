@@ -1,35 +1,35 @@
 <div class="home-page__show">
 	<div class="container content-container">
-		<form action="/">
+		<form action="<%= tours_path %>">
 			<div class="form-group home-inputs">
 				<label for="country">Country</label>
-				<select class="form-control" id="country">
-				  <option selected>Ukraine</option>
-				  <option>United Kingdom</option>
-				  <option>Italy</option>
-				  <option>France</option>
+				<select class="form-control" id="country" name="country">
+				  <option selected value="ua">Ukraine</option>
+				  <option value="gb">United Kingdom</option>
+				  <option value="it">Italy</option>
+				  <option value="fr">France</option>
 				</select>
 			</div>
 			<div class="form-group home-inputs">
 				<label for="city">City</label>
-				<select class="form-control" id="city">
-				  <option selected>Kyiv</option>
-				  <option>Odessa</option>
-				  <option>Lviv</option>
-				  <option>Mykolaiv</option>
+				<select class="form-control" id="city" name="city">
+				  <option selected value="kyiv">Kyiv</option>
+				  <option value="odessa">Odessa</option>
+				  <option value="lviv">Lviv</option>
+				  <option value="mykolaiv">Mykolaiv</option>
 				</select>
 			</div>
 			<div class="form-group home-inputs">
 				<label for="language">Language</label>
-				<select class="form-control" id="language">
-				  <option selected>Italian</option>
-				  <option>Ukranian</option>
-				  <option>English</option>
+				<select class="form-control" id="language" name="language">
+				  <option selected value="it">Italian</option>
+				  <option value="uk">Ukranian</option>
+				  <option value="en">English</option>
 				</select>
 			</div>
 			<div class="form-group home-inputs">
 				<label for="date">Date</label>
-				<input type="date" class="form-control" id="date">
+				<input type="date" class="form-control" id="date" name="date">
 			</div>
 
 			<button class="btn btn-primary">Get the Guide</button>
