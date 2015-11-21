@@ -14,4 +14,8 @@ module HomeHelper
   def current_user_tourist?
     current_user && current_user.tourist?
   end
+
+  def current_user_guide?
+    current_user && current_user.guide?
+  end
 end
