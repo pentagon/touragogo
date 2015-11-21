@@ -1,32 +1,47 @@
-<%= form_for @tour do |f| %>
-  <div class="form-group">
-    <label for="title">Title</label>
-    <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
-  </div>
+<div class="container content-container">
+  <%= form_for @tour, html:{class: 'form-horizontal'} do |f| %>
+    <div class="form-group">
+      <label for="title" class="col-sm-2 control-label">Title</label>
+      <div class="col-sm-10">
+        <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label for="country">Country</label>
-    <%= f.select :country, ['Ukraine', 'ua'], class: 'form-control' %>
-  </div>
+    <div class="form-group">
+      <label for="country" class="col-sm-2 control-label">Country</label>
+      <div class="col-sm-10">
+        <%= f.select :country, ['Ukraine', 'ua'], class: 'form-control' , placeholder: 'Country' %>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label for="country">City</label>
-    <%= f.text_field :city, class: 'form-control' %>
-  </div>
+    <div class="form-group">
+      <label for="country" class="col-sm-2 control-label">City</label>
+      <div class="col-sm-10">
+        <%= f.text_field :city, class: 'form-control', placeholder: 'City'  %>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label for="language">Language</label>
-    <%= f.select :language, ['Ukrainian', 'ua'], class: 'form-control' %>
-  </div>
+    <div class="form-group">
+      <label for="language" class="col-sm-2 control-label">Language</label>
+      <div class="col-sm-10">
+        <%= f.select :language, ['Ukrainian', 'ua'], class: 'form-control', placeholder: 'Language'  %>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label for="cover">File input</label>
-    <input type="file" id="cover">
-  </div>
+    <div class="form-group">
+      <label for="cover" class="col-sm-2 control-label">File input</label>
+      <div class="col-sm-10">
+        <input type="file" id="cover">
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label for="date">Date</label>
-    <input type="date" class="form-control" id="date" name="date">
-  </div>
-  <%= f.submit 'Create your tour', class: 'btn btn-primary' %>
-<% end %>
+    <div class="form-group">
+      <label for="date" class="col-sm-2 control-label">Date</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" id="date" name="date">
+      </div>
+    </div>
+
+    <%= f.submit 'Create your tour', class: 'btn btn-primary col-sm-offset-2' %>
+  <% end %>
+</div>
