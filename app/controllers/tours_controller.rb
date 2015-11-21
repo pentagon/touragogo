@@ -1,4 +1,8 @@
 class ToursController < ApplicationController
+  def index
+    @tours = Tour.all
+  end
+
   def search
     attrs = {}
     [:country, :language, :date].each do |field|
