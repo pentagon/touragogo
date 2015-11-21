@@ -7,8 +7,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 server '178.159.110.16', user: 'dev_lits', roles: %w{app db web}
-
-
+set :unicorn_config_path, '/var/www/devlits.com/findurguide.com/current/config/unicorn/production.rb'
 
 
 # role-based syntax

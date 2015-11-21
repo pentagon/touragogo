@@ -36,7 +36,6 @@ set :rvm_ruby_version, '2.2.3@guide'
 # set :keep_releases, 5
 
 namespace :deploy do
-
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
@@ -46,4 +45,11 @@ namespace :deploy do
     end
   end
 
+  namespace :deploy do
+    task :restart do
+      invoke 'unicorn:reload'
+    end
+  end
 end
+
+after 'deploy:publishing', 'deploy:restart'

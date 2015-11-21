@@ -1,4 +1,4 @@
-root = "'/var/www/devlits.com/findurguide.com'"
+root = '/var/www/devlits.com/findurguide.com/current'
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"
