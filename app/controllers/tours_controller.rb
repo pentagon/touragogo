@@ -1,5 +1,5 @@
 class ToursController < ApplicationController
-  def index
+  def search
     attrs = {}
     [:country, :langugage, :date].each do |field|
       attrs[field] = params[field] if params[field].present?

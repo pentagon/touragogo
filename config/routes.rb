@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     get "users/sign_up_tourist", to: "users/registrations#new_tourist"
   end
 
-  resources :tours, only: [:index, :show, :new, :create]
+  resources :tours, only: [:index, :show, :new, :create] do
+    collection do
+      get :search
+    end
+  end
 
   get "/get-the-guide", to: 'home#get_the_guide'
   root 'home#show'
