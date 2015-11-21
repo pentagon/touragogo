@@ -1,2 +1,4 @@
-<%= render partial: 'tour_item', collection: @tours %>
-<%= link_to 'Add tour', new_tour_path, class: 'btn' if current_user_guide? %>
+<div class="container content-container">
+  <%= render partial: 'tour_item', collection: @tours %>
+</div>
+<%= link_to 'Add tour', new_tour_path, class: 'btn' if current_user_guide? %>  
