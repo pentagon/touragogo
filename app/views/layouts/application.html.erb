@@ -97,21 +97,23 @@
             window.callId = call.getId();
             console.log("Call initiated with ", callee, "['", callId, "']. Ringing...");
           },
-          callinitiatefailed: function(){ console.log('onCallInitiateFailed,'); },
-          callincoming: function(call){ 
-            window.callId = call.getId(); 
-            console.log('onCallIncoming,'); 
+          callinitiatefailed: function(){
+            alert('Call failed');
+            console.log('onCallInitiateFailed,');
+          },
+          callincoming: function(call){
+            window.callId = call.getId();
+            console.log('onCallIncoming,');
             $('#myModal').modal({
               show: true,
               backdrop: false
-            })
+            });
           },
-          callanswered: function(){ console.log('onCallAnswered,'); },
+          callanswered: function() { console.log('onCallAnswered,'); },
           callanswerfailed: function(){ console.log('onCallAnswerFailed,'); },
-          callrejected: function(){ console.log('onCallRejected,'); },
-          callrejectfailed: function(){ console.log('onCallRejectFailed,'); },
-          callhold: function(){ console.log('onCallHold,'); },
-          callunhold: function(){ console.log('onCallUnHold,'); },
+          callrejected: function() {
+            alert('Call rejected!');
+          },
           callended: function(){ console.log('onCallEnded,'); },
           callendfailed: function(){ console.log('onCallEndFailed,'); },
           callestablished: function(){ console.log('onCallEstablished,'); },
@@ -140,28 +142,28 @@
           localVideoContainer: document.getElementById('local-video')
         }
         kandy.call.makeCall(destination, true);
-      }
+      };
 
       window.endCall = function() {
         kandy.call.endCall(callId);
         $('#myModal').modal({
           show: false
-        })
-      }
+        });
+      };
 
       window.answerCall = function() {
         kandy.call.answerCall(callId, true);
         $('#reject').hide(0);
         $('#answer').hide(0);
         $('#hangout').show(0);
-      }
+      };
 
       window.rejectCall = function() {
         $('#myModal').modal({
           show: false
-        })
+        });
         kandy.call.rejectCall(callId);
-      }
+      };
     });
   <% end %>
 </script>
