@@ -30,10 +30,14 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">Guide Me</a>
-      <%= link_to 'My Tours', tours_path, class: 'navbar-brand' if current_user %>
     </div>
 
     <div class="collapse navbar-collapse" id="main-menu">
+      <ul class="nav navbar-nav">
+        <% if current_user %>
+          <li><%= link_to 'My Tours', tours_path %></li>
+        <% end %>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: 'DELETE' %></li>
