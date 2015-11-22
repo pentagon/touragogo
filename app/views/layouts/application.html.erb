@@ -20,7 +20,7 @@
   <![endif]-->
 </head>
 <body>
-<nav class="navbar navbar-default hidden-xs hidden-sm">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu" aria-expanded="false">
@@ -36,6 +36,7 @@
       <ul class="nav navbar-nav">
         <% if current_user %>
           <li><%= link_to 'My Tours', tours_path %></li>
+          <li><%= link_to 'Add tour', new_tour_path, class: '' if current_user_guide? %></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
