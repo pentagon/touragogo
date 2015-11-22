@@ -12,7 +12,7 @@
 
       <div class="col-xs-12 text-center guide-info">
         <% if current_user and current_user != tour_item.owner %>
-          <a onclick="callToGuide('<%= tour_item.owner.kandy_id %>')" class='btn btn-lg btn-success'>
+          <a onclick="callToGuide('<%= tour_item.owner.kandy_id %>')" class='btn btn-sm btn-success'>
             Call guide
           </a>
         <% end %>
