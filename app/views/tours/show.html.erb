@@ -1,2 +1,32 @@
-<h1>yo</h1>
-<img src="<%= @tour.tour_image.url %>">
+<div class="container content-container">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-xs-6">
+					<%= image_tag('black-and-white-man-person-eyes.jpg', alt: '', class: 'img-responsive') %>
+				</div>
+				<div class="col-xs-6">
+					<h3>Tour title</h3>
+					<span class="label label-default">Language: English</span>
+					<span class="label label-default">Price: $25</span>
+					<span class="label label-default">Duration: 2h 30m</span>
+					<span class="label label-default">Date: 25th Jul</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<img src="<%= @tour.tour_image.url %>" class="img-responsive">
+			<div class="well">
+				<p>Hello,  
+My name is Eric, I worked as a guide in 2010. I now am a licensed tour guide. I guide in Japanese, English.  
+I love history, especially Paris one, I love arts, monuments, and above all gastronomy.  
+I was born and raised in Paris, so I grew up here, Paris is my city. </p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-2">
+			<img class="img-responcive" src="https://maps.googleapis.com/maps/api/staticmap?center=&zoom=13&size=500x500&maptype=roadmap&markers=color:red%7Clabel:C%7C47.818217,35.998284&key=AIzaSyCQo2TjlIearvQuC6ZXsFxAbUkZ-QCLVQs" alt="">
+		</div>
+	</div>
+</div>
