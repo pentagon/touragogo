@@ -85,10 +85,12 @@ class User
   end
 
   def kandy_id
+    return unless kandy_register_response
     self['kandy_register_response'].fetch('result', {}).fetch('full_user_id', nil);
   end
 
   def kandy_password
+    return unless kandy_register_response
     self['kandy_register_response'].fetch('result', {}).fetch('user_password', nil);
   end
 end
