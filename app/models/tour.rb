@@ -16,4 +16,8 @@ class Tour
   def owner
     @owner ||= User.find_by(id: owner_id)
   end
+
+  def has_coords?
+    latitude && latitude != 0 && longitude && longitude != 0
+  end
 end
