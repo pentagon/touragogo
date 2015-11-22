@@ -51,8 +51,13 @@
 </nav>
 
 <%= yield %>
-<div id='local-video' style="position: relative; z-index: 2;">local video</div>
-<div id='remote-video' style="position: relative; z-index: 2;">remote video</div>
+
+<div id='local-video' style="position: relative; z-index: 2; width: 300px; height: 200px;">
+  local video
+</div>
+<div id='remote-video' style="position: relative; z-index: 2; width: 300px; height: 200px;">
+  remote video
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -62,15 +67,15 @@
     $(function() {
       var fullUserId = '<%= current_user.kandy_id %>';
       var userPassword = '<%= current_user.kandy_password %>';
-      var domainApiKey = 'DAK2dc941ec92254fad9cda939b8bb05de4';
+      var apiKey = 'DAK2dc941ec92254fad9cda939b8bb05de4';
 
       kandy.setup({
         remoteVideoContainer: document.getElementById('remote-video'),
         localVideoContainer: document.getElementById('local-video'),
         listeners: {
           callinitiated: function(call, callee){
-            console.log("Call initiated with " + callee + ". Ringing...");
-            callId = call.getId();
+            window.callId = call.getId();
+            console.log("Call initiated with ", callee, "['", callId, "']. Ringing...");
           },
           callinitiatefailed: function(){ console.log('onCallInitiateFailed,'); },
           callincoming: function(){ console.log('onCallIncoming,'); },
@@ -90,7 +95,7 @@
         loglevel: 'debug'
       });
 
-      kandy.login(domainApiKey, fullUserId, userPassword,
+      kandy.login(apiKey, fullUserId, userPassword,
         function(token) {
           console.log('Kandy login succeeded, token: ', token);
           $('#online-status').html('Online');
@@ -107,7 +112,15 @@
           remoteVideoContainer: document.getElementById('remote-video'),
           localVideoContainer: document.getElementById('local-video')
         }
-        kandy.call.makeCall(destination, false, fullUserId, opts);
+        kandy.call.makeCall(destination, true);
+      }
+
+      window.endCall = function() {
+        kandy.call.endCall(callId);
+      }
+
+      window.answerCall = function() {
+        kandy.call.answerCall(callId, true);
       }
     });
   <% end %>
