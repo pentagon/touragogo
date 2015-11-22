@@ -1,17 +1,11 @@
 <div class="row">
   <div class="col-md-6">
+      <a onclick="callToGuide('<%= tour_item.owner.kandy_id %>')" style="position: absolute; bottom: 0;" class='btn btn-lg btn-success'>
+        Call guide
+      </a>
     <% if tour_item.has_coords? %>
       <img class="img-responcive" src="https://maps.googleapis.com/maps/api/staticmap?center=&zoom=13&size=500x500&maptype=roadmap&markers=color:red%7Clabel:C%7C<%= tour_item.latitude %>,<%= tour_item.longitude %>&key=AIzaSyCQo2TjlIearvQuC6ZXsFxAbUkZ-QCLVQs" alt="">
     <% end %>
-    <br />
-    <br />
-    <div class='row'>
-      <div class='col-md-12'>
-        <a onclick="kadyCall('<%= tour_item.owner.kandy_id %>')" class='btn btn-lg btn-success'>
-          Call guide
-        </a>
-      </div>
-    </div>
   </div>
   <div class="col-md-6">
     <h2><%= link_to tour_item.title, tour_path(tour_item) %></h2>

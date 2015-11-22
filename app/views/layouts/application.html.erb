@@ -63,10 +63,14 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-xs-6">
-            <div id="local-video" style="position: relative; z-index: 2; min-width: 100px; min-height: 70px;">23213</div>
+            <div id="local-video" style="position: relative; z-index: 2; min-width: 100px; min-height: 70px;">
+              <%= image_tag("black-and-white-man-person-eyes.jpg", alt: "John", class: 'img-responsive') %>
+            </div>
           </div>
           <div class="col-xs-6">
-            <div id="remote-video" style="position: relative; z-index: 2; width: 100px; height: 70px;">123123</div>
+            <div id="remote-video" style="position: relative; z-index: 2; min-width: 100px; min-height: 70px;">
+              <%= image_tag("black-and-white-man-person-eyes.jpg", alt: "John", class: 'img-responsive') %>
+            </div>
           </div>
         </div>
       </div>
@@ -167,5 +171,20 @@
     });
   <% end %>
 </script>
+
+<script>
+  window.callToGuide = function (id) {
+    $('#reject').hide(0);
+    $('#answer').hide(0);
+    $('#hangout').show(0);
+
+    $('#myModal').modal({
+      show: true
+    });
+    
+    kandyCall(id);
+  }
+</script>
+
 </body>
 </html>
