@@ -39,6 +39,7 @@
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><a><span id='online-status' class='label label-danger'>Offline</span></a></li>
         <% if user_signed_in? %>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: 'DELETE' %></li>
         <% else %>
@@ -67,7 +68,22 @@
         remoteVideoContainer: document.getElementById('remote-video'),
         localVideoContainer: document.getElementById('local-video'),
         listeners: {
-          callincoming: onCallIncoming
+          callinitiated: function(call, callee){
+            console.log("Call initiated with " + callee + ". Ringing...");
+            callId = call.getId();
+          },
+          callinitiatefailed: function(){ console.log('onCallInitiateFailed,'); },
+          callincoming: function(){ console.log('onCallIncoming,'); },
+          callanswered: function(){ console.log('onCallAnswered,'); },
+          callanswerfailed: function(){ console.log('onCallAnswerFailed,'); },
+          callrejected: function(){ console.log('onCallRejected,'); },
+          callrejectfailed: function(){ console.log('onCallRejectFailed,'); },
+          callhold: function(){ console.log('onCallHold,'); },
+          callunhold: function(){ console.log('onCallUnHold,'); },
+          callended: function(){ console.log('onCallEnded,'); },
+          callendfailed: function(){ console.log('onCallEndFailed,'); },
+          callestablished: function(){ console.log('onCallEstablished,'); },
+          callstatechanged: function(){ console.log('onCallStateChanged'); }
         },
         autoreconnect: true,
         registerforcalls: true,
@@ -77,15 +93,14 @@
       kandy.login(domainApiKey, fullUserId, userPassword,
         function(token) {
           console.log('Kandy login succeeded, token: ', token);
+          $('#online-status').html('Online');
+          $('#online-status').addClass('label-success');
+          $('#online-status').removeClass('label-danger');
         },
         function() {
           console.log('Kandy login failed');
         }
       );
-
-      function onCallIncoming(call) {
-        console.log('Incoming call');
-      }
 
       window.kandyCall = function(destination) {
         var opts = {
