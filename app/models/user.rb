@@ -33,7 +33,7 @@ class User
 
   field :name, type: String
   field :role, type: Integer, default: 2
-  field :kandy_register_reponse, type: Hash
+  field :kandy_register_response, type: Hash
 
   embeds_many :tour_links, inverse_of: :tourist
 
@@ -61,11 +61,11 @@ class User
   end
 
   def register_in_kandy
-    uid = SecureRandom.hex 4
+    uid = email.gsub('@', '').gsub('.', '')[0..14]
     key = 'DATffefa3a877d644e09b4985e61abbdce8'
     url = 'https://api.kandy.io/v1.2/domains/users/user_id'
     res = RestClient.post "#{url}?key=#{key}&user_id=#{uid}&user_country_code=US", {}
-    set kandy_register_reponse: JSON.parse(res)
+    set kandy_register_response: JSON.parse(res)
   end
 
   def guide?
@@ -82,5 +82,13 @@ class User
     else
       tour_links.map &:tour
     end
+  end
+
+  def kandy_id
+    self['kandy_register_response'].fetch('result', {}).fetch('full_user_id', nil);
+  end
+
+  def kandy_password
+    self['kandy_register_response'].fetch('result', {}).fetch('user_password', nil);
   end
 end

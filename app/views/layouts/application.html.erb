@@ -50,8 +50,52 @@
 </nav>
 
 <%= yield %>
+<div id='local-video' style="position: relative; z-index: 2;">local video</div>
+<div id='remote-video' style="position: relative; z-index: 2;">remote video</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://kandy-portal.s3.amazonaws.com/public/javascript/kandy/2.4.1/kandy.js" ></script>
+<script>
+  <% if current_user %>
+    $(function() {
+      var fullUserId = '<%= current_user.kandy_id %>';
+      var userPassword = '<%= current_user.kandy_password %>';
+      var domainApiKey = 'DAK2dc941ec92254fad9cda939b8bb05de4';
+
+      kandy.setup({
+        remoteVideoContainer: document.getElementById('remote-video'),
+        localVideoContainer: document.getElementById('local-video'),
+        listeners: {
+          callincoming: onCallIncoming
+        },
+        autoreconnect: true,
+        registerforcalls: true,
+        loglevel: 'debug'
+      });
+
+      kandy.login(domainApiKey, fullUserId, userPassword,
+        function(token) {
+          console.log('Kandy login succeeded, token: ', token);
+        },
+        function() {
+          console.log('Kandy login failed');
+        }
+      );
+
+      function onCallIncoming(call) {
+        console.log('Incoming call');
+      }
+
+      window.kandyCall = function(destination) {
+        var opts = {
+          remoteVideoContainer: document.getElementById('remote-video'),
+          localVideoContainer: document.getElementById('local-video')
+        }
+        kandy.call.makeCall(destination, false, fullUserId, opts);
+      }
+    });
+  <% end %>
+</script>
 </body>
 </html>

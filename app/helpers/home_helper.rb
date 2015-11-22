@@ -18,4 +18,8 @@ module HomeHelper
   def current_user_guide?
     current_user && current_user.guide?
   end
+
+  def tour_scheduled?(tour)
+    current_user && current_user.tour_links.find_by(tour: tour).present?
+  end
 end

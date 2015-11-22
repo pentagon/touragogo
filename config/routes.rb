@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :tours, only: [:index, :show, :new, :create] do
     collection do
       get :search
+      get :accept_call
     end
     member do
       post :schedule

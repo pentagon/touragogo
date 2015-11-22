@@ -13,8 +13,12 @@
         <h5><small>Guide name:</small> John Madisson</h5>
         <% if current_user_tourist? %>
           <%= form_tag schedule_tour_path(tour.id) do %>
-          <%= link_to 'Details', tour, class: "btn btn-primary btn-md" %>
-            <%= submit_tag 'Schedule tour', class: "btn btn-success btn-md" %>
+            <%= link_to 'Details', tour, class: "btn btn-primary btn-md" %>
+            <% if tour_scheduled?(tour) %>
+              <span class="label label-default">Scheduled</span>
+            <% else %>
+              <%= submit_tag 'Schedule tour', class: "btn btn-success btn-md" %>
+            <% end %>
           <% end %>
         <% end %>
       </div>
