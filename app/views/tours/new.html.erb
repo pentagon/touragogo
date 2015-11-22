@@ -1,7 +1,7 @@
 <div class="container content-container">
   <div class="row">
     <div class="col-md-6" id="map"></div>
-    
+
     <div class="col-md-6" id="form">
       <%= form_for @tour, html:{class: 'form-horizontal'} do |f| %>
         <div class="form-group">
@@ -14,7 +14,7 @@
         <div class="form-group">
           <label for="country" class="col-sm-2 control-label">Country</label>
           <div class="col-sm-10">
-            <%= f.select :country, ['Ukraine', 'ua'], class: 'form-control' , placeholder: 'Country' %>
+            <%= f.select :country, [['Ukraine', 'ua'], ['Italy', 'it']], {}, {class: 'form-control'}%>
           </div>
         </div>
 
@@ -28,7 +28,7 @@
         <div class="form-group">
           <label for="language" class="col-sm-2 control-label">Language</label>
           <div class="col-sm-10">
-            <%= f.select :language, ['Ukrainian', 'ua'], class: 'form-control', placeholder: 'Language'  %>
+            <%= f.select :language, [['Ukrainian', 'ua'], ['Italy', 'it']], {}, {class: 'form-control'}%>
           </div>
         </div>
 
@@ -62,7 +62,7 @@
       center: {lat: -34.397, lng: 150.644},
       zoom: 8
     });
-    mapContainer.style.height = form.offsetHeight + 'px'
+    mapContainer.style.height = form.offsetHeight + 'px';
   }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQo2TjlIearvQuC6ZXsFxAbUkZ-QCLVQs&callback=initMap" async defer></script>
