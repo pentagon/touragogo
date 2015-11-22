@@ -141,18 +141,16 @@
       );
 
       window.kandyCall = function(destination) {
-        var opts = {
-          remoteVideoContainer: document.getElementById('remote-video'),
-          localVideoContainer: document.getElementById('local-video')
-        }
         kandy.call.makeCall(destination, true);
       };
 
       window.endCall = function() {
-        kandy.call.endCall(callId);
         $('#myModal').modal({
           show: false
         });
+        if (window.callId) {
+          kandy.call.endCall(callId);
+        }
       };
 
       window.answerCall = function() {
@@ -166,14 +164,16 @@
         $('#myModal').modal({
           show: false
         });
-        kandy.call.rejectCall(callId);
+        if (window.callId) {
+          kandy.call.rejectCall(callId);
+        }
       };
     });
   <% end %>
 </script>
 
 <script>
-  window.callToGuide = function (id) {
+  window.callToGuide = function(id) {
     $('#reject').hide(0);
     $('#answer').hide(0);
     $('#hangout').show(0);
@@ -181,7 +181,7 @@
     $('#myModal').modal({
       show: true
     });
-    
+
     kandyCall(id);
   }
 </script>
