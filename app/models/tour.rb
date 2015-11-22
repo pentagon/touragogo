@@ -1,5 +1,8 @@
 class Tour
   include Mongoid::Document
+
+  mount_uploader :tour_image, TourImageUploader
+
   field :title, type: String
   field :country, type: String
   field :city, type: String

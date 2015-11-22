@@ -13,3 +13,6 @@
 /tmp
 .idea/
 .byebug_history
+
+# Ignore uploaded files
+/public/uploads

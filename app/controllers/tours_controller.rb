@@ -25,12 +25,20 @@ class ToursController < ApplicationController
   end
 
   def create
-    Tour.create params[:tour].to_hash.merge(owner: current_user)
-    redirect_to tours_path
+    @tour = Tour.new params[:tour].to_hash.merge(owner: current_user)
+    if @tour.save
+      redirect_to tour_path(@tour)
+    else
+      render :new
+    end
   end
 
   def schedule
     current_user.tour_links.create tour: Tour.find(params[:id]), state: 'scheduled'
     redirect_to tours_path
+  end
+
+  def show
+    @tour = Tour.find(params[:id])
   end
 end

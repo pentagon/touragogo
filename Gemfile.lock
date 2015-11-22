@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/ahoward/mongoid-grid_fs.git
+  revision: e80532461d4f88a51b59d3cd394e10f87707b5d4
+  specs:
+    mongoid-grid_fs (2.2.1)
+      mime-types (>= 1.0, < 3.0)
+      mongoid (>= 3.0, < 6.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -59,6 +67,16 @@ GEM
       sshkit (~> 1.2)
     capistrano3-unicorn (0.2.1)
       capistrano (~> 3.1, >= 3.1.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+    carrierwave-mongoid (0.8.1)
+      carrierwave (>= 0.8.0, < 0.11.0)
+      mongoid (>= 3.0, < 6.0)
+      mongoid-grid_fs (>= 1.3, < 3.0)
+    coderay (1.1.0)
     colorize (0.7.7)
     debug_inspector (0.0.2)
     devise (3.5.2)
@@ -95,6 +113,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    method_source (0.8.2)
     mime-types (2.6.2)
     mini_portile (0.6.2)
     minitest (5.8.3)
@@ -130,6 +149,10 @@ GEM
       omniauth (~> 1.2)
     origin (2.1.1)
     orm_adapter (0.5.0)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -172,6 +195,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    slop (3.6.0)
     spring (1.4.4)
     sprockets (3.4.0)
       rack (> 1, < 3)
@@ -214,11 +238,15 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rvm
   capistrano3-unicorn
+  carrierwave
+  carrierwave-mongoid
   devise
   jquery-rails
   letter_opener
   mongoid
+  mongoid-grid_fs!
   omniauth-facebook
+  pry
   rails (= 4.2.5)
   rest-client
   sass-rails (~> 5.0)

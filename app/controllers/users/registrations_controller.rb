@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :configure_permitted_parameters, only: [:create]
 
   def new_guide
     build_resource({role: User::ROLES[:guide]})
@@ -33,5 +34,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_path = params[:user][:role].to_i == User::ROLES[:guide] ? users_sign_up_guide_path : users_sign_up_tourist_path
       redirect_to redirect_path
     end
+  end
+
+protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up).push :name, :role
   end
 end

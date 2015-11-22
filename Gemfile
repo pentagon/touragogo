@@ -2,13 +2,16 @@ source 'http://rubygems.org'
 
 gem 'rails', '4.2.5'
 
+gem 'carrierwave'
+gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 gem 'devise'
 gem 'jquery-rails'
-gem 'omniauth-facebook'
 gem 'mongoid'
+gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
+gem 'omniauth-facebook'
+gem 'rest-client'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'rest-client'
 
 group :production do
   gem 'unicorn'
@@ -16,6 +19,7 @@ end
 
 group :development, :test do
   gem 'byebug'
+  gem 'pry'
 end
 
 group :development do

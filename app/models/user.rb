@@ -69,11 +69,11 @@ class User
   end
 
   def guide?
-    role == 1
+    role == self.class::ROLES[:guide]
   end
 
   def tourist?
-    role == 2
+    role == self.class::ROLES[:tourist]
   end
 
   def tours
