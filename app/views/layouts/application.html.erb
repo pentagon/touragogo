@@ -52,11 +52,31 @@
 
 <%= yield %>
 
-<div id='local-video' style="position: relative; z-index: 2; width: 300px; height: 200px;">
-  local video
-</div>
-<div id='remote-video' style="position: relative; z-index: 2; width: 300px; height: 200px;">
-  remote video
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-6">
+            <div id="local-video" style="position: relative; z-index: 2; min-width: 100px; min-height: 70px;">23213</div>
+          </div>
+          <div class="col-xs-6">
+            <div id="remote-video" style="position: relative; z-index: 2; width: 100px; height: 70px;">123123</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="reject" type="button" class="btn btn-default" data-dismiss="modal" onclick="rejectCall()">Reject</button>
+        <button id="answer" type="button" class="btn btn-primary" onclick="answerCall()">Answer</button>
+        <button id="hangout" type="button" class="btn btn-danger" style="display:none" onclick="endCall()">End call</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -78,9 +98,13 @@
             console.log("Call initiated with ", callee, "['", callId, "']. Ringing...");
           },
           callinitiatefailed: function(){ console.log('onCallInitiateFailed,'); },
-          callincoming: function(call){
-            window.callId = call.getId();
-            console.log('Incoming call');
+          callincoming: function(call){ 
+            window.callId = call.getId(); 
+            console.log('onCallIncoming,'); 
+            $('#myModal').modal({
+              show: true,
+              backdrop: false
+            })
           },
           callanswered: function(){ console.log('onCallAnswered,'); },
           callanswerfailed: function(){ console.log('onCallAnswerFailed,'); },
@@ -120,10 +144,23 @@
 
       window.endCall = function() {
         kandy.call.endCall(callId);
+        $('#myModal').modal({
+          show: false
+        })
       }
 
       window.answerCall = function() {
         kandy.call.answerCall(callId, true);
+        $('#reject').hide(0);
+        $('#answer').hide(0);
+        $('#hangout').show(0);
+      }
+
+      window.rejectCall = function() {
+        $('#myModal').modal({
+          show: false
+        })
+        kandy.call.rejectCall(callId);
       }
     });
   <% end %>
