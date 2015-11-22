@@ -78,7 +78,10 @@
             console.log("Call initiated with ", callee, "['", callId, "']. Ringing...");
           },
           callinitiatefailed: function(){ console.log('onCallInitiateFailed,'); },
-          callincoming: function(){ console.log('onCallIncoming,'); },
+          callincoming: function(call){
+            window.callId = call.getId();
+            console.log('Incoming call');
+          },
           callanswered: function(){ console.log('onCallAnswered,'); },
           callanswerfailed: function(){ console.log('onCallAnswerFailed,'); },
           callrejected: function(){ console.log('onCallRejected,'); },
